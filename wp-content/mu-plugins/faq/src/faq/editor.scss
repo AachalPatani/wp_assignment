@@ -1,0 +1,61 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.wp-block-devtask-faq {
+
+	.devtask-faq__item {
+		background: #fff;
+		color: #1e1e1e;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 12px;
+		margin-bottom: 12px;
+	}
+
+	.devtask-faq__item .block-editor-plain-text {
+		width: 100%;
+		box-sizing: border-box;
+		color: #1e1e1e;
+		background: #fff;
+		border: 1px solid #ccc;
+		font-weight: 600;
+		padding: 8px;
+		margin-bottom: 8px;
+	}
+
+	.devtask-faq__actions {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 4px;
+		margin-bottom: 8px;
+	}
+
+	.devtask-faq__drag-handle {
+		margin-right: auto;
+		padding: 4px 10px;
+		background: none;
+		border: 0;
+		color: #757575;
+		font: inherit;
+		line-height: 1;
+		cursor: grab;
+		user-select: none;
+		touch-action: none;
+	}
+
+	.devtask-faq__drag-handle.is-active {
+		cursor: grabbing;
+	}
+
+	.devtask-faq__item.is-drag-source {
+		border-style: dashed;
+		border-color: #757575;
+	}
+
+	.devtask-faq__item.is-over {
+		border-color: #2271b1;
+		box-shadow: 0 0 0 2px #2271b1;
+	}
+}

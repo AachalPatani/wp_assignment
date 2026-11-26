@@ -1,0 +1,16 @@
+# Dependencies (reviewer recreates them with npm install)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local environment and WordPress secrets
+.env
+wp-config.php

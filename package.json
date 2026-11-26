@@ -1,0 +1,28 @@
+{
+	"name": "faq",
+	"version": "0.1.0",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "wp-content/mu-plugins/faq/build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --webpack-copy-php --blocks-manifest --webpack-src-dir=wp-content/mu-plugins/faq/src --output-path=wp-content/mu-plugins/faq/build",
+		"format": "wp-scripts format wp-content/mu-plugins/faq/src",
+		"lint:css": "wp-scripts lint-style \"wp-content/mu-plugins/faq/src/**/*.scss\"",
+		"lint:js": "wp-scripts lint-js wp-content/mu-plugins/faq/src",
+		"test:unit": "wp-scripts test-unit-jest utils.test",
+		"packages-update": "wp-scripts packages-update",
+		"start": "wp-scripts start --webpack-copy-php --blocks-manifest --webpack-src-dir=wp-content/mu-plugins/faq/src --output-path=wp-content/mu-plugins/faq/build"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "latest",
+		"@wordpress/blocks": "latest",
+		"@wordpress/components": "^45.0.0",
+		"@wordpress/element": "^10.2.0",
+		"@wordpress/i18n": "latest"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^37.2.0",
+		"jest": "^30.5.2"
+	}
+}

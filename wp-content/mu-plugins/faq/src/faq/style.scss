@@ -1,0 +1,160 @@
+/**
+ * Styles for the FAQ block (frontend and editor).
+ * Rules are limited to the details/summary markup from render.php.
+ */
+
+.wp-block-devtask-faq {
+	// Change these values to restyle the block.
+	--devtask-faq-accent: #2563eb;
+	--devtask-faq-radius: 10px;
+	--devtask-faq-pad: clamp(1rem, 2.8vw, 1.5rem);
+	--devtask-faq-border: rgba(0, 0, 0, 0.15);
+	--devtask-faq-border-strong: rgba(0, 0, 0, 0.3);
+	--devtask-faq-hover: rgba(0, 0, 0, 0.04);
+
+	color: inherit;
+	background: none;
+	padding: 0;
+	max-width: 100%;
+
+	// Colours follow the theme text colour (works in light and dark themes).
+	@supports (color: color-mix(in srgb, red, blue)) {
+		--devtask-faq-border: color-mix(in srgb, currentcolor 15%, transparent);
+		--devtask-faq-border-strong: color-mix(in srgb, currentcolor 30%, transparent);
+		--devtask-faq-hover: color-mix(in srgb, currentcolor 5%, transparent);
+	}
+
+	details.devtask-faq__item {
+		margin-bottom: 1rem;
+		border: 1px solid var(--devtask-faq-border);
+		border-radius: var(--devtask-faq-radius);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		overflow: hidden;
+		transition: border-color 0.2s ease, box-shadow 0.25s ease;
+
+		&:hover {
+			border-color: var(--devtask-faq-border-strong);
+			box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+		}
+
+		// Open item: accent bar on the left and a stronger shadow.
+		&[open] {
+			border-color: var(--devtask-faq-border-strong);
+			box-shadow: inset 4px 0 0 var(--devtask-faq-accent), 0 8px 24px rgba(0, 0, 0, 0.1);
+		}
+	}
+
+	.devtask-faq__question {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		min-height: 56px;
+		padding: var(--devtask-faq-pad);
+		font-weight: 600;
+		font-size: clamp(1rem, 2.4vw, 1.1875rem);
+		line-height: 1.4;
+		cursor: pointer;
+		list-style: none;
+		overflow-wrap: anywhere;
+		transition: background-color 0.2s ease;
+		-webkit-tap-highlight-color: transparent;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&::marker {
+			content: "";
+		}
+
+		&:hover {
+			background-color: var(--devtask-faq-hover);
+		}
+
+		// Chevron drawn with CSS borders, no image or icon font needed.
+		&::after {
+			content: "";
+			flex-shrink: 0;
+			width: 0.5rem;
+			height: 0.5rem;
+			margin-right: 0.25rem;
+			border-right: 2px solid currentcolor;
+			border-bottom: 2px solid currentcolor;
+			transform: translateY(-2px) rotate(45deg);
+			transition: transform 0.25s ease, color 0.2s ease;
+		}
+
+		&:focus-visible {
+			outline: 3px solid var(--devtask-faq-accent);
+			outline-offset: -3px;
+		}
+	}
+
+	// Open state: the chevron flips and takes the accent colour.
+	details[open] > .devtask-faq__question::after {
+		color: var(--devtask-faq-accent);
+		transform: translateY(2px) rotate(-135deg);
+	}
+
+	.devtask-faq__answer {
+		padding: var(--devtask-faq-pad);
+		border-top: 1px solid var(--devtask-faq-border);
+		line-height: 1.75;
+		overflow-wrap: anywhere;
+
+		> :first-child {
+			margin-top: 0;
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+
+		a {
+			text-underline-offset: 0.2em;
+		}
+	}
+
+	details[open] > .devtask-faq__answer {
+		animation: devtask-faq-fade 0.25s ease;
+	}
+
+	// Windows high contrast mode: use system colours so borders stay visible.
+	@media (forced-colors: active) {
+
+		details.devtask-faq__item {
+			border-color: CanvasText;
+		}
+
+		.devtask-faq__answer {
+			border-top-color: CanvasText;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+
+		details.devtask-faq__item,
+		.devtask-faq__question,
+		.devtask-faq__question::after {
+			transition: none;
+		}
+
+		details[open] > .devtask-faq__answer {
+			animation: none;
+		}
+	}
+}
+
+@keyframes devtask-faq-fade {
+
+	from {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
