@@ -6,13 +6,14 @@
 	"license": "GPL-2.0-or-later",
 	"main": "wp-content/mu-plugins/faq/build/index.js",
 	"scripts": {
-		"build": "wp-scripts build --webpack-copy-php --blocks-manifest --webpack-src-dir=wp-content/mu-plugins/faq/src --output-path=wp-content/mu-plugins/faq/build",
-		"format": "wp-scripts format wp-content/mu-plugins/faq/src",
-		"lint:css": "wp-scripts lint-style \"wp-content/mu-plugins/faq/src/**/*.scss\"",
-		"lint:js": "wp-scripts lint-js wp-content/mu-plugins/faq/src",
+		"start": "node scripts/run-all.js start",
+		"build": "node scripts/run-all.js build",
+		"format": "wp-scripts format wp-content/mu-plugins/faq/src wp-content/mu-plugins/currency-converter/src",
+		"lint:js": "wp-scripts lint-js wp-content/mu-plugins/faq/src wp-content/mu-plugins/currency-converter/src",
+		"lint:css": "wp-scripts lint-style \"wp-content/mu-plugins/*/src/**/*.scss\"",
 		"test:unit": "wp-scripts test-unit-jest utils.test",
-		"packages-update": "wp-scripts packages-update",
-		"start": "wp-scripts start --webpack-copy-php --blocks-manifest --webpack-src-dir=wp-content/mu-plugins/faq/src --output-path=wp-content/mu-plugins/faq/build"
+		"typecheck": "tsc --noEmit",
+		"packages-update": "wp-scripts packages-update"
 	},
 	"dependencies": {
 		"@wordpress/block-editor": "latest",
@@ -22,7 +23,9 @@
 		"@wordpress/i18n": "latest"
 	},
 	"devDependencies": {
+		"@types/react": "^19.3.3",
 		"@wordpress/scripts": "^37.2.0",
-		"jest": "^30.5.2"
+		"jest": "^30.5.2",
+		"typescript": "^6.0.3"
 	}
 }

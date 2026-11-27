@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "devtask/currency-converter",
+	"version": "0.1.0",
+	"title": "Currency Converter",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Currency converter for international money transfers.",
+	"attributes": {},
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "currency-converter",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}
